@@ -7,6 +7,7 @@ Note: This is a sub-project of an ongoing team project done by Julian Coles, Mar
 ## Overview
 
 This pipeline supports analysis across multiple rodent species, including:
+
 - **Naked Mole Rat** (Heterocephalus glaber)
 - **Mouse** (Mus musculus)
 - **Rat** (Rattus norvegicus)
@@ -15,20 +16,19 @@ This pipeline supports analysis across multiple rodent species, including:
 
 ### Key Features
 
--  **Multi-species support** with species-specific configurations
--  **QuPath integration** for annotation and quality control
--  **Flexible ML models** (ResNet, EfficientNet, custom architectures)
--  **Transfer learning** across species
--  **Comprehensive evaluation** and cross-species comparison
--  **Interactive exploration tools** for data analysis
--  **Docker support** for reproducibility
-
+- **Multi-species support** with species-specific configurations
+- **QuPath integration** for annotation and quality control
+- **Flexible ML models** (ResNet, EfficientNet, custom architectures)
+- **Transfer learning** across species
+- **Comprehensive evaluation** and cross-species comparison
+- **Interactive exploration tools** for data analysis
+- **Docker support** for reproducibility
 
 ## Quick Start
 
 ### Prerequisites
 
-- Python 3.10+ 
+- Python 3.10+
 - WSL/Linux/macOS
 
 ### One-Time Setup
@@ -65,7 +65,7 @@ bash scripts/run_multi_species.sh --species mouse,rat,nmr
 
 ## Project Structure
 
-```
+```text
 rodent-ovarian-follicle-ml/
 ├── README.md                     # This file
 ├── CONTRIBUTING.md               # Contribution guidelines
@@ -76,8 +76,7 @@ rodent-ovarian-follicle-ml/
 │   ├── species/                 # Species-specific configs
 │   │   ├── mouse.yaml           # M. musculus settings
 │   │   ├── rat.yaml             # R. norvegicus settings
-│   │   ├── nmr.yaml             # H. glaber settings
-│   │   └── guinea_pig.yaml      # C. porcellus settings
+│   │   └── nmr.yaml             # H. glaber settings
 │   ├── dataset.yaml             # Global dataset settings
 │   ├── preprocess.yaml          # Tiling and normalization
 │   ├── train.yaml               # Model and training config
@@ -206,37 +205,49 @@ rodent-ovarian-follicle-ml/
 ## Pipeline Stages
 
 ### 1. Ingest
+
 Downloads slides from the MOTHER database for the specified species.
+
 ```bash
 bash scripts/run_ingest.sh --species mouse
 ```
 
 ### 2. Preprocess
+
 Tiles slides, normalizes staining, and detects tissue regions.
+
 ```bash
 bash scripts/run_preprocess.sh --species mouse
 ```
 
 ### 3. Train
+
 Trains ML model on annotated tiles.
+
 ```bash
 bash scripts/run_train.sh --species mouse
 ```
 
 ### 4. Infer
+
 Runs predictions on new slides.
+
 ```bash
 bash scripts/run_infer.sh --species mouse
 ```
 
 ### 5. Postprocess
+
 Aggregates predictions, counts follicles by type.
+
 ```bash
 bash scripts/run_postprocess_count.sh --species mouse
 ```
 
 ### 6. Evaluate
+
 Computes metrics, generates reports, and visualizations.
+
 ```bash
 bash scripts/run_eval_report.sh --species mouse
 ```
@@ -354,7 +365,7 @@ MIT License - see LICENSE file
 
 - **Issues**: Open a GitHub issue
 - **Discussions**: GitHub Discussions
-- **Email**: martin.t.orkuma@gmail.com
+- **Email**: <martin.t.orkuma@gmail.com>
 
 ## Acknowledgments
 

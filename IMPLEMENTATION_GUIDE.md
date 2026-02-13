@@ -1,10 +1,10 @@
 # Rodent Ovarian Follicle ML Pipeline - Complete Implementation Guide
 
-## 🚀 Overview
+## Overview
 
 This is an **expanded, multi-species pipeline** for rodent ovarian follicle analysis that builds on the naked mole rat implementation with:
 
-- ✅ **Multi-species support** (Mouse, Rat, NMR, Guinea Pig, Hamster, +custom)
+- ✅ **Multi-species support** (Mouse, Rat, NMR, Hamster, +custom)
 - ✅ **Species registry system** for managing species-specific parameters
 - ✅ **Enhanced QuPath integration** with bidirectional data flow
 - ✅ **Cross-species comparison** and transfer learning
@@ -14,11 +14,12 @@ This is an **expanded, multi-species pipeline** for rodent ovarian follicle anal
 - ✅ **Production-ready** shell scripts with argument parsing
 - ✅ **Docker support** for reproducibility
 
-## 📦 What's Included
+## What's Included
 
 ### Enhanced Core Modules
 
 #### 1. Species Management (`src/species/`)
+
 ```python
 from species.registry import get_species_info, list_species
 
@@ -29,15 +30,17 @@ print(mouse_info.typical_follicle_types)
 
 # List all supported species
 species = list_species()
-# ['mouse', 'rat', 'nmr', 'guinea_pig', 'hamster']
+# ['mouse', 'rat', 'nmr', 'hamster']
 ```
 
 **Key files:**
+
 - `registry.py` - Species database with morphology and parameters
 - `morphology.py` - Species-specific morphological validators
 - `validators.py` - Data validation for each species
 
 #### 2. QuPath Integration (`src/qupath/`)
+
 ```python
 from qupath.import_annot import import_qupath_annotations
 from qupath.export import export_predictions_to_qupath
@@ -56,12 +59,14 @@ export_predictions_to_qupath(
 ```
 
 **Key files:**
+
 - `import_annot.py` - Import GeoJSON/CSV annotations from QuPath
 - `export.py` - Export predictions in QuPath format
 - `groovy_bridge.py` - Python-Groovy communication
 - Groovy scripts in `annotations/qupath_scripts/`
 
 #### 3. Enhanced Preprocessing (`src/preprocess/`)
+
 ```python
 from preprocess.stain_norm import normalize_he_staining
 from preprocess.augmentation import get_augmentation_pipeline
@@ -81,11 +86,13 @@ aug_pipeline = get_augmentation_pipeline(
 ```
 
 **Key files:**
+
 - `stain_norm.py` - Reinhard, Macenko, Vahadane normalization
 - `augmentation.py` - Species-appropriate augmentation policies
 - `tissue_detection.py` - Advanced tissue segmentation
 
 #### 4. Model Zoo (`src/train/models.py`)
+
 ```python
 from train.models import get_model
 
@@ -105,6 +112,7 @@ model = get_model(
 ```
 
 **Supported models:**
+
 - ResNet (18, 34, 50, 101)
 - EfficientNet (B0-B7)
 - DenseNet (121, 169, 201)
@@ -112,6 +120,7 @@ model = get_model(
 - Custom U-Net for segmentation
 
 #### 5. Cross-Species Analysis (`src/eval/compare.py`)
+
 ```python
 from eval.compare import compare_species_performance
 
@@ -125,7 +134,7 @@ comparison = compare_species_performance(
 generate_cross_species_report(comparison, 'outputs/reports/')
 ```
 
-## 🔧 Usage Examples
+## Usage Examples
 
 ### Single Species Pipeline
 
@@ -193,7 +202,7 @@ python run/export_to_qupath.py \
 # File > Import > Import as GeoJSON
 ```
 
-## 📁 Configuration System
+## Configuration System
 
 ### Species-Specific Configs (`configs/species/*.yaml`)
 
@@ -248,6 +257,7 @@ model:
 ### Annotation Export from QuPath
 
 **Groovy Script** (run in QuPath):
+
 ```groovy
 // annotations/qupath_scripts/export_annotations.groovy
 def project = getProject()
@@ -262,6 +272,7 @@ exportObjectsToGeoJson(annotations, path, "FEATURE_COLLECTION")
 ```
 
 **Python Import:**
+
 ```python
 from src.qupath.import_annot import import_qupath_geojson
 
@@ -303,6 +314,7 @@ export_to_geojson(
 ```
 
 **Import in QuPath:**
+
 ```groovy
 // File > Import > Import as GeoJSON
 def path = '/path/to/predictions.geojson'
@@ -311,7 +323,7 @@ addObjects(objects)
 fireHierarchyUpdate()
 ```
 
-## 🐳 Docker Usage
+## Docker Usage
 
 ### Build Image
 
@@ -354,7 +366,7 @@ docker run -v $(pwd)/data:/app/data \
   rodent-follicle-ml --species mouse,rat,nmr --parallel
 ```
 
-## 🧪 Testing
+## Testing
 
 ```bash
 # Run all tests
@@ -370,9 +382,10 @@ pytest tests/test_qupath.py -v
 pytest tests/test_preprocess.py::test_species_normalization
 ```
 
-## 📊 Example Outputs
+## Example Outputs
 
 ### Follicle Count Table
+
 ```csv
 slide_id,species,primordial,primary,secondary,antral,total
 mouse_001,mouse,523,89,34,12,658
@@ -381,7 +394,8 @@ rat_001,rat,892,145,67,23,1127
 ```
 
 ### Cross-Species Comparison
-```
+
+```text
 Species Comparison Report
 ========================
 Metric: Follicle Density (per mm²)
@@ -393,7 +407,7 @@ Rat              124.3 ± 18    20.2 ± 4   9.3 ± 2      3.2 ± 1
 NMR              203.7 ± 31    42.5 ± 7   18.4 ± 4     1.2 ± 0.5
 ```
 
-## 🔍 Exploration Scripts
+## Exploration Scripts
 
 ```bash
 # Dataset statistics by species
@@ -422,7 +436,7 @@ python explore/04_model_predictions.py \
   --slides data/raw/mouse/slide_005.ome.tiff
 ```
 
-## 🎯 Adding a New Species
+## Adding a New Species
 
 ### 1. Create Species Entry
 
@@ -479,9 +493,10 @@ species:
 bash scripts/run_pipeline.sh --species gerbil
 ```
 
-## 🚨 Troubleshooting
+## Troubleshooting
 
 ### Species Not Found
+
 ```bash
 $ bash scripts/run_pipeline.sh --species unknown
 Error: Species 'unknown' not supported.
@@ -491,6 +506,7 @@ Available species: mouse, rat, nmr, guinea_pig, hamster
 ```
 
 ### QuPath Import Fails
+
 ```bash
 # Check GeoJSON format
 python -c "from src.qupath.import_annot import validate_geojson; \
@@ -503,6 +519,7 @@ python -c "from src.qupath.import_annot import validate_geojson; \
 ```
 
 ### Cross-Species Model Transfer Poor Performance
+
 ```bash
 # Try fine-tuning more layers
 bash scripts/run_train.sh \
@@ -514,7 +531,7 @@ bash scripts/run_train.sh \
 # Edit configs/species/target_species.yaml
 ```
 
-## 📚 Additional Documentation
+## Additional Documentation
 
 - `docs/ARCHITECTURE.md` - System architecture and design decisions
 - `docs/SPECIES_GUIDE.md` - Detailed species information
@@ -522,7 +539,7 @@ bash scripts/run_train.sh \
 - `docs/API.md` - Python API documentation
 - `annotations/protocol.md` - Annotation protocol for all species
 
-## 🎓 Best Practices
+## Best Practices
 
 1. **Start with one species** - Get pipeline working before expanding
 2. **Use transfer learning** - Train on data-rich species first
@@ -533,9 +550,10 @@ bash scripts/run_train.sh \
 7. **Regular checkpoints** - Save models at multiple epochs
 8. **Cross-validate** - Use multiple folds for robust evaluation
 
-## 🤝 Contributing
+## ontributing
 
 See `CONTRIBUTING.md` for guidelines on:
+
 - Adding new species
 - Implementing new models
 - Improving preprocessing
