@@ -35,6 +35,7 @@ This pipeline supports analysis across multiple rodent species, including:
 
 ```bash
 # Clone or download this repository
+git clone git@github.com:martinorkuma/rodent-ovarian-follicle-ml.git
 cd rodent-ovarian-follicle-ml
 
 # Run setup (creates venv, installs dependencies, verifies environment)
