@@ -1,0 +1,22 @@
+# Data and outputs (too large for git)
+data/
+outputs/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Keep structure
+!data/.gitkeep
+!outputs/.gitkeep

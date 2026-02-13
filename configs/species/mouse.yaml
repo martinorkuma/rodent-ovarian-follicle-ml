@@ -1,0 +1,75 @@
+# Mouse (Mus musculus) specific configuration
+
+species:
+  code: "mouse"
+  scientific_name: "Mus musculus"
+  common_name: "Mouse"
+  mother_id: "M-musculus"
+
+# Morphological characteristics
+morphology:
+  ovary_size_mm: [2, 4]
+  typical_cycle_days: "4-5"
+  reproductive_lifespan_months: [2, 12]
+
+# Follicle characteristics
+follicles:
+  types:
+    - primordial
+    - primary
+    - secondary
+    - antral
+  
+  size_ranges_um:
+    primordial: [15, 25]
+    primary: [25, 40]
+    secondary: [40, 150]
+    antral: [150, 400]
+
+# Processing parameters
+preprocessing:
+  tile_size: 256
+  stride: 256
+  min_tissue_ratio: 0.1
+  magnification: "20x"
+  normalization: "standardize"
+
+# Model parameters
+model:
+  num_classes: 5  # background + 4 follicle types
+  input_size: 256
+  pretrained: true
+
+# Data augmentation
+augmentation:
+  horizontal_flip: true
+  vertical_flip: true
+  rotation: 15
+  brightness: 0.15
+  contrast: 0.15
+
+# Expected data distribution
+data:
+  expected_samples: 20
+  age_groups:
+    - juvenile
+    - young_adult
+    - adult
+    - aged
+  
+  typical_distribution:
+    primordial: 0.70
+    primary: 0.15
+    secondary: 0.10
+    antral: 0.05
+
+# Quality control
+quality_control:
+  min_follicles_per_slide: 50
+  max_follicles_per_slide: 5000
+  check_staining_quality: true
+
+notes: |
+  Mouse is the most common laboratory model with extensive literature.
+  Follicles develop rapidly from primordial to antral stage.
+  Regular 4-5 day estrous cycles.

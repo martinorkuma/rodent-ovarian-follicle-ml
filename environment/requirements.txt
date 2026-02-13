@@ -1,0 +1,46 @@
+# Core ML and Deep Learning
+torch>=2.0.0
+torchvision>=0.15.0
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+
+# Image Processing
+Pillow>=10.0.0
+opencv-python>=4.8.0
+scikit-image>=0.21.0
+tifffile>=2023.7.0
+
+# For OME-TIFF and whole slide images (optional, needs system libs)
+# openslide-python>=1.3.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.16.0
+
+# Configuration and Utilities
+PyYAML>=6.0
+tqdm>=4.65.0
+requests>=2.31.0
+colorama>=0.4.6
+
+# Geometric operations (for QuPath integration)
+shapely>=2.0.0
+geopandas>=0.13.0
+
+# Data validation
+pydantic>=2.0.0
+jsonschema>=4.19.0
+
+# Optional advanced features
+# albumentations>=1.3.0  # Advanced augmentation
+# tensorboard>=2.14.0    # Training visualization
+# wandb>=0.15.0          # Experiment tracking
+
+# Testing and development (install separately with requirements-dev.txt)
+# pytest>=7.4.0
+# pytest-cov>=4.1.0
+# black>=23.7.0
+# flake8>=6.1.0
+# mypy>=1.5.0
