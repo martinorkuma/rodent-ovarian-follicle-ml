@@ -2,26 +2,27 @@
 
 A **multi-species, production-ready machine learning pipeline** for automated identification, segmentation, and quantification of ovarian follicles in rodent histological images from the MOTHER database.
 
+Note: This is a sub-project of an ongoing team project done by Julian Coles, Martin Orkuma, Pamela Styborski, and Silvia Tenempaguay-Nunez
+
 ## Overview
 
-This pipeline supports analysis across multiple rodent species including:
+This pipeline supports analysis across multiple rodent species, including:
 - **Naked Mole Rat** (Heterocephalus glaber)
 - **Mouse** (Mus musculus)
 - **Rat** (Rattus norvegicus)
-- **Guinea Pig** (Cavia porcellus)
 - **Hamster** (Mesocricetus auratus)
-- **And other rodent species in MOTHER database**
+- **And other rodent species in the MOTHER database**
 
 ### Key Features
 
-- 🔬 **Multi-species support** with species-specific configurations
-- 📊 **QuPath integration** for annotation and quality control
-- 🤖 **Flexible ML models** (ResNet, EfficientNet, custom architectures)
-- 🔄 **Transfer learning** across species
-- 📈 **Comprehensive evaluation** and cross-species comparison
-- 🔍 **Interactive exploration tools** for data analysis
-- 🐳 **Docker support** for reproducibility
-- ☁️  **Cloud-ready** for scaling to large datasets
+-  **Multi-species support** with species-specific configurations
+-  **QuPath integration** for annotation and quality control
+-  **Flexible ML models** (ResNet, EfficientNet, custom architectures)
+-  **Transfer learning** across species
+-  **Comprehensive evaluation** and cross-species comparison
+-  **Interactive exploration tools** for data analysis
+-  **Docker support** for reproducibility
+
 
 ## Quick Start
 
@@ -29,8 +30,6 @@ This pipeline supports analysis across multiple rodent species including:
 
 - Python 3.10+ 
 - WSL/Linux/macOS
-- 8GB+ RAM (16GB recommended)
-- GPU optional but recommended for training
 
 ### One-Time Setup
 
@@ -72,8 +71,8 @@ rodent-ovarian-follicle-ml/
 ├── getting_started.sh            # One-command setup
 ├── .gitignore                    
 │
-├── configs/                      # Configuration files
-│   ├── species/                  # Species-specific configs
+├── configs/                     # Configuration files
+│   ├── species/                 # Species-specific configs
 │   │   ├── mouse.yaml           # M. musculus settings
 │   │   ├── rat.yaml             # R. norvegicus settings
 │   │   ├── nmr.yaml             # H. glaber settings
@@ -113,47 +112,47 @@ rodent-ovarian-follicle-ml/
 │   ├── figures/                 # Plots and visualizations
 │   └── reports/                 # HTML/PDF reports
 │
-├── src/                          # Source code library
+├── src/                         # Source code library
 │   ├── ingest/                  # Data acquisition
-│   │   ├── ingest.py           # MOTHER database download
+│   │   ├── ingest.py            # MOTHER database download
 │   │   └── mother_api.py        # MOTHER API wrapper
 │   ├── preprocess/              # Preprocessing
-│   │   ├── preprocess.py       # Tiling and normalization
-│   │   ├── stain_norm.py       # Advanced stain normalization
-│   │   └── augmentation.py     # Data augmentation
+│   │   ├── preprocess.py        # Tiling and normalization
+│   │   ├── stain_norm.py        # Advanced stain normalization
+│   │   └── augmentation.py      # Data augmentation
 │   ├── train/                   # Training
-│   │   ├── train.py            # Training loop
-│   │   ├── models.py           # Model architectures
-│   │   ├── losses.py           # Loss functions
-│   │   └── callbacks.py        # Training callbacks
+│   │   ├── train.py             # Training loop
+│   │   ├── models.py            # Model architectures
+│   │   ├── losses.py            # Loss functions
+│   │   └── callbacks.py         # Training callbacks
 │   ├── infer/                   # Inference
-│   │   ├── infer.py            # Batch inference
-│   │   └── ensemble.py         # Model ensembling
+│   │   ├── infer.py             # Batch inference
+│   │   └── ensemble.py          # Model ensembling
 │   ├── postprocess/             # Post-processing
-│   │   ├── count.py            # Follicle counting
-│   │   ├── spatial.py          # Spatial analysis
-│   │   └── statistics.py       # Statistical summaries
+│   │   ├── count.py             # Follicle counting
+│   │   ├── spatial.py           # Spatial analysis
+│   │   └── statistics.py        # Statistical summaries
 │   ├── eval/                    # Evaluation
-│   │   ├── evaluate.py         # Metrics computation
-│   │   ├── visualize.py        # Visualization
-│   │   └── compare.py          # Cross-species comparison
+│   │   ├── evaluate.py          # Metrics computation
+│   │   ├── visualize.py         # Visualization
+│   │   └── compare.py           # Cross-species comparison
 │   ├── qupath/                  # QuPath integration
-│   │   ├── export.py           # Export to QuPath
-│   │   ├── import_annot.py     # Import annotations
-│   │   └── groovy_bridge.py    # Python-Groovy bridge
+│   │   ├── export.py            # Export to QuPath
+│   │   ├── import_annot.py      # Import annotations
+│   │   └── groovy_bridge.py     # Python-Groovy bridge
 │   ├── species/                 # Species-specific utilities
-│   │   ├── registry.py         # Species registry
-│   │   ├── morphology.py       # Species morphology
-│   │   └── validators.py       # Species validators
+│   │   ├── registry.py          # Species registry
+│   │   ├── morphology.py        # Species morphology
+│   │   └── validators.py        # Species validators
 │   └── utils/                   # Utilities
-│       ├── config.py           # Configuration management
-│       ├── paths.py            # Path resolution
-│       ├── logging.py          # Logging utilities
-│       ├── seed.py             # Reproducibility
-│       ├── io.py               # I/O operations
-│       └── validation.py       # Data validation
+│       ├── config.py            # Configuration management
+│       ├── paths.py             # Path resolution
+│       ├── logging.py           # Logging utilities
+│       ├── seed.py              # Reproducibility
+│       ├── io.py                # I/O operations
+│       └── validation.py        # Data validation
 │
-├── run/                          # Execution entry points
+├── run/                         # Execution entry points
 │   ├── ingest.py
 │   ├── preprocess.py
 │   ├── train.py
@@ -206,13 +205,13 @@ rodent-ovarian-follicle-ml/
 ## Pipeline Stages
 
 ### 1. Ingest
-Downloads slides from MOTHER database for specified species.
+Downloads slides from the MOTHER database for the specified species.
 ```bash
 bash scripts/run_ingest.sh --species mouse
 ```
 
 ### 2. Preprocess
-Tiles slides, normalizes staining, detects tissue regions.
+Tiles slides, normalizes staining, and detects tissue regions.
 ```bash
 bash scripts/run_preprocess.sh --species mouse
 ```
@@ -236,7 +235,7 @@ bash scripts/run_postprocess_count.sh --species mouse
 ```
 
 ### 6. Evaluate
-Computes metrics, generates reports and visualizations.
+Computes metrics, generates reports, and visualizations.
 ```bash
 bash scripts/run_eval_report.sh --species mouse
 ```
@@ -329,9 +328,9 @@ If you use this pipeline, please cite:
 ```bibtex
 @software{rodent_follicle_ml,
   title = {Rodent Ovarian Follicle ML Pipeline},
-  author = {Your Name},
-  year = {2025},
-  url = {https://github.com/yourusername/rodent-ovarian-follicle-ml}
+  author = {Julian Coles, Martin Orkuma, Pamela Styborski, and Silvia Tenempaguay-Nunez},
+  year = {2026},
+  url = {https://github.com/martinorkuma/rodent-ovarian-follicle-ml}
 }
 ```
 
@@ -354,15 +353,12 @@ MIT License - see LICENSE file
 
 - **Issues**: Open a GitHub issue
 - **Discussions**: GitHub Discussions
-- **Email**: your.email@institution.edu
+- **Email**: martin.t.orkuma@gmail.com
 
 ## Acknowledgments
 
 - MOTHER Database team
-- QuPath developers
-- PyTorch and scikit-learn communities
-- Your research team and collaborators
+- Arizona State University
+- Julian Coles, Martin Orkuma, Pamela Styborski, and Silvia Tenempaguay-Nunez
 
 ---
-
-**Ready to start?** Run `bash getting_started.sh` and follow the prompts!
